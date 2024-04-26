@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieFlix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="navi">
+            <button class="hamburger" onclick="toggleNavbar()">☰</button>
+            <script>
+                function toggleNavbar() {
+                var navbar = document.querySelector('.navi .navbar');
+                var login = document.querySelector('.navi #login');
+                navbar.classList.toggle('active');
+                login.classList.toggle('active'); 
+            }
+            </script>
+            <div class="top_right_logo">
+                <img src="webpageImages\logo_top_bg.png" alt="logo">
+            </div>
+            <nav class="navbar">
+                <button class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen">Home 🏠︎</button>
+                <div class="dropdown">
+                    <button class="tablinks dropbtn">Genre <span class="arrow">❯</span></button>
+                    <div id="myDropdownGenre" class="dropdown-content-genre">
+                        <div class="dropdown-item">
+                            <a href="#">Horror ➜</a>
+                            <div class="sub-navbar">
+                                <a onclick="openTab(event, 'BuyHorror')">Buy Horror Movies</a>
+                                <a onclick="openTab(event, 'RentHorror')">Rent Horror Movies</a>
+                                <a onclick="openTab(event, 'FreePreviewHorror')">Free Preview Horror Movies</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#">Comedy ➜</a>
+                            <div class="sub-navbar">
+                                <a onclick="openTab(event, 'BuyComedy')">Buy Comedy Movies</a>
+                                <a onclick="openTab(event, 'RentComedy')">Rent Comedy Movies</a>
+                                <a onclick="openTab(event, 'FreePreviewComedy')">Free Preview Comedy Movies</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#">Action ➜</a>
+                            <div class="sub-navbar">
+                                <a onclick="openTab(event, 'BuyAction')">Buy Action Movies</a>
+                                <a onclick="openTab(event, 'RentAction')">Rent Action Movies</a>
+                                <a onclick="openTab(event, 'FreePreviewAction')">Free Preview Action Movies</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#">Thriller ➜</a>
+                            <div class="sub-navbar">
+                                <a onclick="openTab(event, 'BuyThriller')">Buy Thriller Movies</a>
+                                <a onclick="openTab(event, 'RentThriller')">Rent Thriller Movies</a>
+                                <a onclick="openTab(event, 'FreePreviewThriller')">Free Preview Thriller Movies</a>
+                            </div>
+                        </div>
+                    </div>
+                    <script src="genreDropdownScript.js"></script>
+                </div>
+                <button class="tablinks" onclick="openTab(event, 'myWishlist')">My Wishlist ☰</button>
+                <div class="dropdown">  
+                    <button class="tablinks dropbtn" id="aboutBtn">About <span class="arrow">❯</span></button>    
+                    <div id="myDropdownAbout" class="dropdown-content-about">
+                        <div class="dropdown-item">
+                            <a onclick="openTab(event, 'About-Company')">Company 🏢</a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a onclick="openTab(event, 'About-Team')">Team 👥</a>
+                        </div>
+                    </div>
+                    <script src="aboutScript.js"></script>
+                </div>
+                <button class="tablinks" onclick="openTab(event, 'Contact')">Contact Us ✆</button>
+                <div id="login">
+                    <% if (username) { %>
+                      <button onclick="window.location.href='/logout';">Logout</button>
+                      <span>Hello, <%= username %></span>
+                    <% } else { %>
+                      <button onclick="window.location.href='/auth';">Login/Signup</button>
+                    <% } %>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!--------------------------------------------Horror-------------------------------------------->
+
+    <div id="BuyHorror" class="tabcontent" style="display:none;">
+        <h3>Buy Horror Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item" data-movie-id="1" data-movie-title="IT">
+                <img src="genreHorror\buyHorrorImages\itPoster.jpg" alt="Movie Title">
+                <h4>IT</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=hxvyel7JiLk';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="2" data-movie-title="Shaitaan">
+                <img src="genreHorror\buyHorrorImages\shaitaanPoster.jpeg" alt="Movie Title">
+                <h4>Shaitaan</h4>
+                <button onclick="alert('This movie is not available to purchase.');">Unavailable Movie</button>
+            </div>
+            <div class="grid-item" data-movie-id="3" data-movie-title="Stree">
+                <img src="genreHorror\buyHorrorImages\streePoster.jpg" alt="Movie Title">
+                <h4>Stree</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=7mM34A0J3H8';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="4" data-movie-title="The Conjuring">
+                <img src="genreHorror\buyHorrorImages\theConjuringPoster.jpg" alt="Movie Title">
+                <h4>The Conjuring</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=yftMYuacQio';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="5" data-movie-title="Veronica">
+                <img src="genreHorror\buyHorrorImages\veronicaPoster.jpg" alt="Movie Title">
+                <h4>Veronica</h4>
+                <button onclick="window.location.href='https://www.amazon.com/Veronica/dp/B07BF5SR39';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="RentHorror" class="tabcontent" style="display:none;">
+        <h3>Rent Horror Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="genreHorror\rentHorrorImages\hereditaryPoster.png" alt="Movie Title">
+                <h4>Hereditary</h4>
+                <button onclick="window.location.href='https://www.microsoft.com/en-us/p/hereditary/8d6kgwxn2cd6?activetab=pivot%3aoverviewtab';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreHorror\rentHorrorImages\itComesAtNightPoster.png" alt="Movie Title">
+                <h4>It Comes At Night</h4>
+                <button onclick="window.location.href='https://www.amazon.com/Comes-At-Night-Joel-Edgerton/dp/B074P8B5ZP';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreHorror\rentHorrorImages\pariPoster.jpg" alt="Movie Title">
+                <h4>Pari</h4>
+                <button onclick="window.location.href='https://www.amazon.com/Pari-Anushka-Sharma-Kohli/dp/B08KWQH932';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreHorror\rentHorrorImages\SawXPoster.png" alt="Movie Title">
+                <h4>Saw X</h4>
+                <button onclick="window.location.href='https://www.amazon.com/Saw-X-Tobin-Bell/dp/B0CH9CCNQD';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreHorror\rentHorrorImages\TheCabinPoster.jpg" alt="Movie Title">
+                <h4>The Cabin</h4>
+                <button onclick="window.location.href='https://www.amazon.com/Cabin-Caitlin-Crommett/dp/B07JPLQHL7';">Rent</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="FreePreviewHorror" class="tabcontent" style="display:none;">
+        <h3>Free Preview Horror Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="genreHorror\rentHorrorImages\pariPoster.jpg" alt="Movie Title">
+                <h4>Pari</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt7329858/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreHorror\buyHorrorImages\streePoster.jpg" alt="Movie Title">
+                <h4>Stree</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt8108202/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreHorror\buyHorrorImages\veronicaPoster.jpg" alt="Movie Title">
+                <h4>Veronica</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt5862312/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreHorror\buyHorrorImages\shaitaanPoster.jpeg" alt="Movie Title">
+                <h4>Shaitaan</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt27744786/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreHorror\rentHorrorImages\itComesAtNightPoster.png" alt="Movie Title">
+                <h4>It Comes At Night</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt4695012/';">Free Preview</button>
+            </div>
+        </div>
+    </div>
+
+    <!----------------------------------------------------Comedy----------------------------------------------------->
+
+    <div id="BuyComedy" class="tabcontent" style="display:none;">
+        <h3>Buy Comedy Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item" data-movie-id="6" data-movie-title="Central Intelligence">
+                <img src="genreComedy\buyComedyImages\centralIntelligencePoster.jpg" alt="Movie Title">
+                <h4>Central Intelligence</h4>
+                <button onclick="window.location.href='https://www.amazon.in/Central-Intelligence-Dwayne-Johnson/dp/B01KAA3A9M';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="7" data-movie-title="Dhamaal">
+                <img src="genreComedy\buyComedyImages\dhamaalPoster.jpg" alt="Movie Title">
+                <h4>Dhamaal</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=BWED8Gz4JvQ';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="8" data-movie-title="Golmaal Again">
+                <img src="genreComedy\buyComedyImages\golmaalAgainPoster.jpg" alt="Movie Title">
+                <h4>Golmaal Again</h4>
+                <button onclick="window.location.href='https://www.amazon.in/Golmaal-Again-Ajay-Devgn/dp/B0779F4DPZ';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="9" data-movie-title="Hangover">
+                <img src="genreComedy\buyComedyImages\hangoverPoster.jpg" alt="Movie Title">
+                <h4>Hangover</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=xRm78I8PDnI';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="10" data-movie-title="Ted">
+                <img src="genreComedy\buyComedyImages\tedPoster.png" alt="Movie Title">
+                <h4>Ted</h4>
+                <button onclick="window.location.href='https://www.amazon.in/Ted-Mark-Wahlberg/dp/B08F2BMF89';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="RentComedy" class="tabcontent" style="display:none;">
+        <h3>Rent Comedy Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="genreComedy\rentComedyImages\3IdiotsPoster.jpg" alt="Movie Title">
+                <h4>3 Idiots</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=e2eaXjb7LQ8';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreComedy\rentComedyImages\dumbAndDumberPoster.jpg" alt="Movie Title">
+                <h4>Dumb and Dumber</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/dp/amzn1.dv.gti.4314e8e1-5de3-400a-aa1b-ee690c642e4d?autoplay=0&ref_=atv_cf_strg_wb';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreComedy\rentComedyImages\khichdi2Poster.jpg" alt="Movie Title">
+                <h4>Khichdi 2</h4>
+                <button onclick="alert('This movie is not available to rent.');">Unavailable Movie</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreComedy\rentComedyImages\millersPoster.jpg" alt="Movie Title">
+                <h4>We Are The Millers</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/dp/amzn1.dv.gti.7ab07389-cbad-b87f-da4e-d6a6da13e599?autoplay=0&ref_=atv_cf_strg_wb';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreComedy\rentComedyImages\omg2Poster.jpg" alt="Movie Title">
+                <h4>OMG 2</h4>
+                <button onclick="alert('This movie is not available to rent.');">Unavailable Movie</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="FreePreviewComedy" class="tabcontent" style="display:none;">
+        <h3>Free Preview Comedy Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="genreComedy\freePreviewComedyImages\otherGuysPoster.jpg" alt="Movie Title">
+                <h4>The Other Guys</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt1386588/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreComedy\buyComedyImages\dhamaalPoster.jpg" alt="Movie Title">
+                <h4>Dhamaal</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt0845448/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreComedy\buyComedyImages\tedPoster.png" alt="Movie Title">
+                <h4>Ted</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt14824792/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreComedy\rentComedyImages\khichdi2Poster.jpg" alt="Movie Title">
+                <h4>Khichdi 2</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt26744890/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreComedy\rentComedyImages\dumbAndDumberPoster.jpg" alt="Movie Title">
+                <h4>Dumb and Dumber</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt0109686/';">Free Preview</button>
+            </div>
+        </div>
+    </div>
+
+    <!----------------------------------------------------Action---------------------------------------------------->
+
+    <div id="BuyAction" class="tabcontent" style="display:none;">
+        <h3>Buy Action Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item" data-movie-id="11" data-movie-title="Equalizer 3">
+                <img src="genreAction\buyActionImages\equalizer3Poster.jpg" alt="Movie Title">
+                <h4>Equalizer 3</h4>
+                <button onclick="window.location.href='https://www.amazon.com/Equalizer-3-Digital-Denzel-Washington/dp/B0CGY6WXVW';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="12" data-movie-title="Gadar 2">
+                <img src="genreAction\buyActionImages\gadar2Poster.jpg" alt="Movie Title">
+                <h4>Gadar 2</h4>
+                <button onclick="window.location.href=' https://www.youtube.com/watch?v=GOocQOZ-xD8';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="13" data-movie-title="Inception">
+                <img src="genreAction\buyActionImages\InceptionPoster.jpg" alt="Movie Title">
+                <h4>Inception</h4>
+                <button onclick="window.location.href='https://www.amazon.com/Inception-Leonardo-DiCaprio/dp/B0047WJ11G';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="14" data-movie-title="Mission Impossible">
+                <img src="genreAction\buyActionImages\missionImpossiblePoster.jpg" alt="Movie Title">
+                <h4>Mission Impossible</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/detail/Mission-Impossible---Dead-Reckoning/0MRYQ1BCQHCD2EZ7AHX28XQGY8';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="15" data-movie-title="Tejas">
+                <img src="genreAction\buyActionImages\tejasPoster.jpg" alt="Movie Title">
+                <h4>Tejas</h4>
+                <button onclick="alert('This movie is not available to purchase.');">Unavailable Movie</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="RentAction" class="tabcontent" style="display:none;">
+        <h3>Rent Action Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="genreAction\rentActionImages\madMaxPoster.jpg" alt="Movie Title">
+                <h4>Mad Max</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/dp/amzn1.dv.gti.12b1c5a7-e664-7465-afbc-74d5411c4a9b?autoplay=0&ref_=atv_cf_strg_wb';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreAction\rentActionImages\actionHeroPoster.jpg" alt="Movie Title">
+                <h4>An Action Hero</h4>
+                <button onclick="window.location.href='https://www.amazon.com/Last-Action-Hero-Arnold-Schwarzenegger/dp/B000PH40HM';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreAction\rentActionImages\nobodyPoster.jpeg" alt="Movie Title">
+                <h4>Nobody</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/dp/amzn1.dv.gti.128d0aea-3069-4247-aa6e-33617fdc3788?autoplay=0&ref_=atv_cf_strg_wb';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreAction\rentActionImages\theAccountantPoster.png" alt="Movie Title">
+                <h4>The Accountant</h4>
+                <button onclick="window.location.href='https://www.amazon.com/Accountant-Ben-Affleck/dp/B01M5BJCEH';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreAction\rentActionImages\tiger3Poster.jpg" alt="Movie Title">
+                <h4>Tiger 3</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/dp/amzn1.dv.gti.88bcb060-248c-4b9f-ab47-a98c1414a5af?autoplay=0&ref_=atv_cf_strg_wb';">Rent</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="FreePreviewAction" class="tabcontent" style="display:none;">
+        <h3>Free Preview Action Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="genreAction\freePreviewActionImages\gadar2Poster.jpg" alt="Movie Title">
+                <h4>Gadar 2</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt15441054/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreAction\freePreviewActionImages\InceptionPoster.jpg" alt="Movie Title">
+                <h4>Inception</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt1375666/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreAction\freePreviewActionImages\madMaxPoster.jpg" alt="Movie Title">
+                <h4>Mad Max</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt1392190/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreAction\freePreviewActionImages\missionImpossiblePoster.jpg" alt="Movie Title">
+                <h4>Mission Impossible</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt9603212/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreAction\freePreviewActionImages\tejasPoster.jpg" alt="Movie Title">
+                <h4>Tejas</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt6950476/';">Free Preview</button>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------------------------------Thriller----------------------------------------------------->
+
+    <div id="BuyThriller" class="tabcontent" style="display:none;">
+        <h3>Buy Thriller Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item" data-movie-id="16" data-movie-title="Drishyam 2">
+                <img src="genreThriller\buyThrillerImages\drishyam2Poster.jpg" alt="Movie Title">
+                <h4>Drishyam 2</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/dp/amzn1.dv.gti.2a67b1bd-15a9-414c-97e9-8ccb8380eff4?autoplay=0&ref_=atv_cf_strg_wb';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="17" data-movie-title="Drishyam">
+                <img src="genreThriller\buyThrillerImages\drishyamPoster.jpg" alt="Movie Title">
+                <h4>Drishyam</h4>
+                <button onclick="alert('This movie is not available to purchase.');">Unavailable Movie</button>
+            </div>
+            <div class="grid-item" data-movie-id="18" data-movie-title="Mystic River">
+                <img src="genreThriller\buyThrillerImages\mysticRiverPoster.jpg" alt="Movie Title">
+                <h4>Mystic River</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=dN7d-ZKs6m8';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="19" data-movie-title="On The Line"> 
+                <img src="genreThriller\buyThrillerImages\onTheLinePoster.jpg" alt="Movie Title">
+                <h4>On The Line</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/dp/amzn1.dv.gti.43907e39-21cc-4756-be48-3a836fda25de?autoplay=0&ref_=atv_cf_strg_wb';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+            <div class="grid-item" data-movie-id="20" data-movie-title="Zodiac">
+                <img src="genreThriller\buyThrillerImages\zodiacPoster.jpg" alt="Movie Title">
+                <h4>Zodiac</h4>
+                <button onclick="window.location.href='https://www.amazon.in/Zodiac-Jake-Gyllenhaal/dp/B00AEBB89W';">Buy</button>
+                <button class="wishlist-btn" onclick="addToWishlist(event, this)">Add to Wishlist</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="RentThriller" class="tabcontent" style="display:none;">
+        <h3>Rent Thriller Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="genreThriller\rentThrillerImages\babyPoster.jpg" alt="Movie Title">
+                <h4>Baby</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=c3bPPe5Xzp0';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreThriller\rentThrillerImages\inceptionPoster.jpg" alt="Movie Title">
+                <h4>Inception</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=ArRqeBKBsEU';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreThriller\rentThrillerImages\jokerPoster.jpg" alt="Movie Title">
+                <h4>Joker</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/dp/amzn1.dv.gti.18b9b187-a9bf-4617-b554-b43cf4e0a5f5?autoplay=0&ref_=atv_cf_strg_wb';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreThriller\rentThrillerImages\littleThingsPoster.jpeg" alt="Movie Title">
+                <h4>The Little Things</h4>
+                <button onclick="window.location.href='https://www.primevideo.com/dp/amzn1.dv.gti.9534e9e5-02e4-4425-9e75-70e265908c72?autoplay=0&ref_=atv_cf_strg_wb';">Rent</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreThriller\rentThrillerImages\wednesdayPoster.jpg" alt="Movie Title">
+                <h4>Wednesday</h4>
+                <button onclick="window.location.href='https://www.youtube.com/watch?v=Mii6TZXPrbQ';">Rent</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="FreePreviewThriller" class="tabcontent" style="display:none;">
+        <h3>Free Preview Thriller Movies</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="genreThriller\freePreviewThrillerImages\wednesdayPoster.jpg" alt="Movie Title">
+                <h4>Wednesday</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt1280558/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreThriller\freePreviewThrillerImages\drishyamPoster.jpg" alt="Movie Title">
+                <h4>Drishyam</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt4430212/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreThriller\freePreviewThrillerImages\littleThingsPoster.jpeg" alt="Movie Title">
+                <h4>Little Things</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt10016180/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreThriller\freePreviewThrillerImages\mysticRiverPoster.jpg" alt="Movie Title">
+                <h4>Mystic River</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt0327056/';">Free Preview</button>
+            </div>
+            <div class="grid-item">
+                <img src="genreThriller\freePreviewThrillerImages\babyPoster.jpg" alt="Movie Title">
+                <h4>Baby</h4>
+                <button onclick="window.location.href='https://www.imdb.com/title/tt3848892/';">Free Preview</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="Home" class="tabcontent">
+        <div id="website-name">
+            <img src="webpageImages\logo_bottom_bg.png" alt="Website Name">
+            <h2>POPULAR MOVIES</h2>
+        </div>
+        <div class="slideshow-container">
+            <div class="movie-item">
+                <img src="slideshowImages\JohnWickPoster.jpg" alt="Movie Title 2">
+                <div class="movie-title">John Wick Chapter 4</div>
+            </div>
+            <div class="movie-item">
+                <img src="slideshowImages\RRRPoster.jpg" alt="Movie Title 2">
+                <div class="movie-title">RRR</div>
+            </div>
+            <div class="movie-item">
+                <img src="slideshowImages\MissionImpossiblePoster.jpg" alt="Movie Title 3">
+                <div class="movie-title">Mission Impossible</div>
+            </div>
+            <div class="movie-item">
+                <img src="slideshowImages\12thFailPoster.jpeg" alt="Movie Title 2">
+                <div class="movie-title">12th Fail</div>
+            </div>    
+            <div class="movie-item">
+                <img src="slideshowImages\OppenheimerPoster.jpg" alt="Movie Title 3">
+                <div class="movie-title">Oppenheimer</div>
+            </div>
+            <div class="movie-item">
+                <img src="slideshowImages\Drishyam2Poster.jpg" alt="Movie Title 2">
+                <div class="movie-title">Drishyam 2</div>
+            </div>    
+            <div class="movie-item">
+                <img src="slideshowImages\TheCreatorPoster.jpg" alt="Movie Title 3">
+                <div class="movie-title">The Creator</div>       
+            </div>
+            <div class="movie-item">
+                <img src="slideshowImages\Super30Poster.jpg" alt="Movie Title 2">
+                <div class="movie-title">Super 30</div>
+            </div>
+            <div class="movie-item">
+                <img src="slideshowImages\Extraction2Poster.jpg" alt="Movie Title 3">
+                <div class="movie-title">Extraction 2</div>       
+            </div>
+            <div class="movie-item">
+                <img src="slideshowImages\IB71Poster.jpg" alt="Movie Title 2">
+                <div class="movie-title">IB71</div>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+    
+    <div id="About-Company" class="tabcontent">
+        <div class="about-company">
+            <h3>About MovieFlix</h3>
+            <p>
+                Welcome to MovieFlix, your ultimate destination for exploring the world of cinema. Founded in 2024, 
+                MovieFlix has grown to become a beloved hub for movie enthusiasts seeking to Discover, Buy, Rent, and 
+                Free Preview their favorite films. From blockbuster hits to indie gems, our vast collection is curated to 
+                cater to diverse tastes and interests.
+            </p>
+            <p>
+                At MovieFlix, we believe in the power of storytelling and its ability to connect people across different 
+                cultures and backgrounds. Our mission is to provide an accessible platform for users to experience 
+                the magic of movies, learn about film history, and keep up with the latest trends in the film industry.
+            </p>
+            <p>
+                Our team comprises dedicated cinephiles who work tirelessly to ensure that our content library is 
+                regularly updated with high-quality prints, ensuring that you have the best viewing experience possible. 
+                We also value community engagement and encourage our users to leave reviews, rate movies, and 
+                participate in discussions.
+            </p>
+            <p>
+                As we continue to grow, MovieFlix remains committed to improving and expanding our services. We 
+                welcome feedback from our users and are constantly looking for ways to enhance your movie-watching 
+                journey. Thank you for choosing MovieFlix. Sit back, relax, and enjoy the show!
+            </p>
+            <div class="about-extra-info">
+                <h4>Our Values</h4>
+                <ul>
+                    <li>● Passion for cinema</li>
+                    <li>● Accessible for all</li>
+                    <li>● Commitment to quality</li>
+                    <li>● Community engagement</li>
+                    <li>● Innovation in service</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="About-Team" class="tabcontent">
+        <h3>Our Team</h3>
+        <table class = "about-team" style="width: 70%;">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            <tr style="height: 50px">
+                <td>Vibhav Misra</td>
+                <td>20BCS6709@cuchd.in</td>
+            </tr>
+            <tr style="height: 50px">
+                <td>Sahil Wadhwa</td>
+                <td>20BCS6736@cuchd.in</td>
+            </tr>
+            <tr style="height: 50px">
+                <td>Akram Khan</td>
+                <td>20BCS6737@cuchd.in</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="Contact" class="tabcontent">
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <p>Email: vibhavemail@gmail.com</p>
+            <p>Phone: 7042521312</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="slideshowScript.js"></script>
+    
+    <button id="accessibilityButton" aria-label="Toggle accessibility settings" title="Toggle accessibility settings" onclick="toggleAccessibility()">
+        <img src="webpageImages\accessibility.png" alt="Accessibility">
+    </button>
+
+    <div id="copyDialog" class="dialog-overlay" style="display:none;">
+        <div class="dialog-box">
+          <span class="close" onclick="closeDialog('copyDialog')">X</span>
+          <h2>Copying Not Allowed</h2>
+          <p>Copying content from this website is not allowed.</p>
+          <button onclick="closeDialog('copyDialog')">Close</button>
+        </div>
+        <script src="warning.js"></script>
+    </div>
+      
+    <div id="rightClickDialog" class="dialog-overlay" style="display:none;">
+        <div class="dialog-box">
+          <span class="close" onclick="closeDialog('rightClickDialog')">X</span>
+          <h2>Right-Click Not Allowed</h2>
+          <p>Right-clicking on this website is not allowed.</p>
+          <button onclick="closeDialog('rightClickDialog')">Close</button>
+        </div>
+        <script src="warning.js"></script>
+    </div>
+
+    <div id="myWishlist" class="tabcontent" style="display:none;">
+        <h2>My Wishlist</h2>
+        <table id="wishlistTable">
+            <thead>
+                <tr>
+                    <th>Movie Title</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <script src="wishlist.js"></script>
+    </div>
+</body>
+</html>

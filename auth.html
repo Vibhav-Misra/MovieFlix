@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Signup</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function validatePassword(password) {
+          const strengthText = document.getElementById('strengthText');
+          const strongRegex = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{7,})');
+          
+          if(strongRegex.test(password)){
+            strengthText.textContent = 'Password strength: Strong';
+            strengthText.style.color = 'green';
+            return true;
+          } else {
+            strengthText.textContent = 'Password must be at least 7 characters long, contain a number, an uppercase letter, and a symbol.';
+            strengthText.style.color = 'orange';
+            return false;
+          }
+        }
+  
+        function checkPassword() {
+          const password = document.getElementById('new-password').value;
+          return validatePassword(password);
+        }
+      </script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="form-container">
+            <h2>Signup</h2>
+            <form action="/signup" method="POST" onsubmit="return checkPassword()">
+                <div class="input-group">
+                    <label for="new-username">Username:</label>
+                    <input type="text" id="new-username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="new-password">Password:</label>
+                    <input type="password" id="new-password" name="password" required oninput="validatePassword(this.value)">
+                    <div id="strengthText" style="font-size: 0.8em;"></div>
+                </div>
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
